@@ -1,7 +1,6 @@
 import PokeDataDisplay from "./PokeDataDisplay";
 import PokeSearchBar from "./PokeSearchBar"
 import { useEffect, useState } from 'react';
-import { graphql, GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLList } from "graphql";
 import pokemonWithTypeQuery from "./../apiQueries/pokemonWithTypeQuery";
 import pokeApiService from "../services/poke-api-service";
 
