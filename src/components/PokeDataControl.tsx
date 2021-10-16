@@ -3,7 +3,7 @@ import PokeSearchBar from "./PokeSearchBar"
 import { useEffect, useState } from 'react';
 import pokemonWithTypeQuery from "../apiHelpers/pokemonWithTypeQuery";
 import pokeApiService from "../services/poke-api-service";
-import PokemonWithTypeResultsInterface from './../apiHelpers/pokemonWithTypeResultsInterface'
+import PokemonWithTypeResultsInterface from './../apiHelpers/PokemonWithTypeResultsInterface'
 
 
 interface PokeDataControlProps { }
@@ -16,7 +16,7 @@ const PokeDataControl: React.FC<PokeDataControlProps> = () => {
     pokeApiService<PokemonWithTypeResultsInterface>(pokemonWithTypeQuery, variables)
       .then(results => { 
         const convertedSearchResults = convertSearchResults(results);
-        setSearchResults(convertSearchResults);
+        setSearchResults(convertedSearchResults);
        });
   }
 
