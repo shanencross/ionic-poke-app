@@ -5,7 +5,7 @@ import pokemonWithTypesQuery from "../apiHelpers/pokemonWithTypesQuery";
 import pokeApiService from "../services/poke-api-service";
 import PokemonWithTypesResultsInterface from '../apiHelpers/PokemonWithTypesResultsInterface'
 import SinglePokemonInterface from '../apiHelpers/SinglePokemonInterface';
-
+import convertPokemonWithTypesResults from '../apiHelpers/convertPokemonWithTypesResults';
 
 interface PokeDataControlProps { }
 
@@ -16,18 +16,10 @@ const PokeDataControl: React.FC<PokeDataControlProps> = () => {
     const variables = { "pokemon_type_input": searchInput };
     pokeApiService<PokemonWithTypesResultsInterface>(pokemonWithTypesQuery, variables)
       .then(results => { 
-        const convertedSearchResults = convertSearchResults(results);
-        console.log(convertedSearchResults);
+        const convertedSearchResults: SinglePokemonInterface[] = convertPokemonWithTypesResults(results);
         setSearchResults(convertedSearchResults);
        });
   }
-
-  const convertSearchResults = (results: PokemonWithTypesResultsInterface): SinglePokemonInterface[] =>
-    results.data.pokemon.map((pokemon) => ({
-      name: pokemon.name,
-      pokedexNumber: pokemon.pokedexNumber,
-      pokemonTypes: pokemon.pokemonTypes.map(({pokemonType}) => pokemonType.name)
-    }));
 
   useEffect(() => {
     console.log(searchResults);
