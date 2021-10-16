@@ -16,9 +16,9 @@ const pokemonWithTypeQuery: string = `
         order_by: { id: asc }
       ) {
         name
-        pokedex_number: pokemon_species_id
-        pokemon_types: pokemon_v2_pokemontypes {
-          pokemon_type: pokemon_v2_type {
+        pokedexNumber: pokemon_species_id
+        pokemonTypes: pokemon_v2_pokemontypes {
+          pokemonType: pokemon_v2_type {
             name
           }
         }
