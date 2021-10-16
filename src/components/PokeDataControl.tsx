@@ -21,7 +21,7 @@ const PokeDataControl: React.FC<PokeDataControlProps> = () => {
       }
     });
 
-    const pokemonObjectType = new GraphQLObjectType({
+        const pokemonObjectType = new GraphQLObjectType({
       name: 'pokemon',
       fields: {
         name: {
@@ -49,16 +49,6 @@ const PokeDataControl: React.FC<PokeDataControlProps> = () => {
           }
         }
       })
-    });
-
-    new GraphQLObjectType({
-      name: 'pokemonType',
-      fields: {
-        name: {
-          type: GraphQLString,
-          description: 'The name of the Pokemon type'
-        }
-      }
     });
 
     const source = `
