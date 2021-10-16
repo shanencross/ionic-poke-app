@@ -10,7 +10,7 @@ import convertPokemonWithTypesResults from '../apiHelpers/convertPokemonWithType
 interface PokeDataControlProps { }
 
 const PokeDataControl: React.FC<PokeDataControlProps> = () => {
-  const [searchResults, setSearchResults] = useState<Object>({});
+  const [searchResults, setSearchResults] = useState<SinglePokemonInterface[]>([]);
 
   const handleSearchChange = (searchInput: string) => {
     const variables = { "pokemon_type_input": searchInput };
@@ -28,7 +28,7 @@ const PokeDataControl: React.FC<PokeDataControlProps> = () => {
   return (
     <div className="PokeDataControl">
       <PokeSearchBar onSearchChange={handleSearchChange}/>
-      <PokeDataDisplay/>
+      <PokeDataDisplay pokeData={searchResults}/>
     </div>
   );
 };
