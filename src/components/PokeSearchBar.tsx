@@ -11,7 +11,7 @@ const PokeSearchBar: React.FC<PokeSearchBarProps> = (props) => {
       <IonTitle size="large">Search for Pokemon by type!</IonTitle>
     </IonToolbar>
     <IonGrid>
-      <IonRow><IonCol>Types:</IonCol></IonRow>
+      <IonRow><IonCol>Types (try entering these!):</IonCol></IonRow>
       <IonRow><IonCol>Normal · Fire · Water · Grass · Electric</IonCol></IonRow>
       <IonRow><IonCol>Ice · Fighting · Poison · Ground · Flying</IonCol></IonRow>
       <IonRow><IonCol>Psychic · Bug · Rock · Ghost · Dark</IonCol></IonRow>
