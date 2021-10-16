@@ -1,8 +1,9 @@
 import PokeDataDisplay from "./PokeDataDisplay";
 import PokeSearchBar from "./PokeSearchBar"
 import { useEffect, useState } from 'react';
-import pokemonWithTypeQuery from "./../apiQueries/pokemonWithTypeQuery";
+import pokemonWithTypeQuery from "../apiHelpers/pokemonWithTypeQuery";
 import pokeApiService from "../services/poke-api-service";
+import PokemonWithTypeResultsInterface from './../apiHelpers/pokemonWithTypeResultsInterface'
 
 
 interface PokeDataControlProps { }
@@ -12,8 +13,16 @@ const PokeDataControl: React.FC<PokeDataControlProps> = () => {
 
   const handleSearchChange = (searchInput: string) => {
     const variables = { "pokemon_type_input": searchInput };
-    pokeApiService<Object>(pokemonWithTypeQuery, variables)
-      .then(results => { setSearchResults(results) });
+    pokeApiService<PokemonWithTypeResultsInterface>(pokemonWithTypeQuery, variables)
+      .then(results => { 
+        const convertedSearchResults = convertSearchResults(results);
+        setSearchResults(convertSearchResults);
+       });
+  }
+
+  const convertSearchResults = (results: PokemonWithTypeResultsInterface): PokemonWithTypeResultsInterface => {
+    console.log(results);
+    return results
   }
 
   useEffect(() => {

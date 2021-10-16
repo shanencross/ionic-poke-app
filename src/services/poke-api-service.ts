@@ -1,4 +1,4 @@
-function pokeApiService<T>(query: string, variables: Object) : Promise<T> {
+function pokeApiService<T>(query: string, variables: any) : Promise<T> {
   return fetch('https://beta.pokeapi.co/graphql/v1beta', {
     method: 'POST',
     headers: {
