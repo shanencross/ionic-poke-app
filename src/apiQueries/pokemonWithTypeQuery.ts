@@ -1,4 +1,4 @@
-const pokemonWithTypeQuery = `
+const pokemonWithTypeQuery: string = `
     query PokemonWithType($pokemon_type_input: String!) {
       pokemon: pokemon_v2_pokemon (
         where:  {

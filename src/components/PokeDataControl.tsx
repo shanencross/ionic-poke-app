@@ -3,25 +3,18 @@ import PokeSearchBar from "./PokeSearchBar"
 import { useEffect, useState } from 'react';
 import { graphql, GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLList } from "graphql";
 import pokemonWithTypeQuery from "./../apiQueries/pokemonWithTypeQuery";
+import pokeApiService from "../services/poke-api-service";
+
 
 interface PokeDataControlProps { }
 
 const PokeDataControl: React.FC<PokeDataControlProps> = () => {
-  const [searchResults, setSearchResults] = useState<string | null>(null);
+  const [searchResults, setSearchResults] = useState<Object>({});
 
   const handleSearchChange = (searchInput: string) => {
     const variables = { "pokemon_type_input": searchInput };
-
-    fetch('https://beta.pokeapi.co/graphql/v1beta', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({ query: pokemonWithTypeQuery, variables })
-    })
-      .then(response => response.json())
-      .then(data => setSearchResults(data));
+    pokeApiService<Object>(pokemonWithTypeQuery, variables)
+      .then(results => { setSearchResults(results) });
   }
 
   useEffect(() => {
